@@ -1,6 +1,6 @@
 {
   "id": "mta",
-  "title": "Chronicles of Darkness 2e (Dev. Build)",
+  "title": "Chronicles of Darkness 2e",
   "description": "2nd edition of the Chronicles of Darkness system by White Wolf.",
   "version": "0.12.0",
   "authors": [
@@ -16,8 +16,8 @@
     "maximum": "10"
   },
   "url": "https://gitlab.com/MarlQ/mta",
-  "manifest": "https://gitlab.com/MarlQ/mta/-/raw/homebrew/system.json",
-  "download": "https://gitlab.com/MarlQ/mta/-/archive/homebrew/mta-master.zip",
+  "manifest": "https://github.com/thalissa/mta-fix/releases/download/1.0.0/system.json",
+  "download": "https://github.com/thalissa/mta-fix/releases/download/1.0.0/mta-fix.zip",
   "changelog": "https://gitlab.com/MarlQ/mta/-/releases/v0.8.0",
   "readme": "https://gitlab.com/MarlQ/mta/-/blob/master/README.md",
   "bugs": "https://gitlab.com/MarlQ/mta/-/issues",
