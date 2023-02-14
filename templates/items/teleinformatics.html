@@ -1,0 +1,117 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <header class="sheet-header flexrow">
+      <div class="flexcol merit-img">
+        <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      </div>
+        <div class="header-details flexrow">
+          <h1 class="charname">
+            <input name="name" type="text" value="{{item.name}}" placeholder="Item Name" />
+          </h1>
+          <div class="item-subtitle">
+            <h4 class="item-type">{{localize "MTA.Teleinformatics"}}</h4>
+            <span class="item-status"></span>
+          </div>
+        </div>
+    </header>
+  <div class="gold-border"> </div>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs"> 
+      <a class="item" data-tab="effects">Effects</a>   
+      <a class="item" data-tab="description">Description</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+      
+        {{!-- Description Tab --}}
+        <div class="tab" data-tab="description">
+            {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
+        </div>
+      
+        {{!-- Effects Tab --}}
+        <div class="tab" data-tab="effects">
+          <div class="item-stat-block">
+            <div class="form-line">
+                <label>{{localize "MTA.Cost"}}</label> <input name="system.cost" type="text" value="{{system.cost}}" data-koptions="1 Willpower/1 point of lethal damage"/>
+            </div>
+            <div class="form-line">
+                <label>{{localize "MTA.Action"}}</label> <input name="system.action" type="text" value="{{system.action}}" data-koptions="{{#each config.actionTypes}}{{this}}/{{/each}}"/>
+            </div>
+            <div class="form-line">
+                <label>{{localize "MTA.Duration"}}</label> <input name="system.duration" type="text" value="{{system.duration}}" data-koptions="One scene/One day/Indefinite"/>
+            </div>
+            <div class="form-line">
+              <label> Active </label>
+              <label class="checkBox">
+                <input data-dtype="Boolean" name="system.effectsActive" type="checkbox" {{checked system.effectsActive}}>
+                <span></span>
+              </label>
+            </div>
+    
+            <div class="form-line attributeList">
+              <label> Effects </label>
+              <span class="stoneButton effectAdd">+</span>
+              {{#each system.effects}}
+              <span>
+                <select name="system.effects.{{@index}}.name">
+                  {{#select name}}
+                  <optgroup label="Attributes">
+                    {{#each ../config.attributes_physical}}
+                    <option value="attributes_physical.{{@key}}">{{this}}</option>
+                    {{/each}}
+                    {{#each ../config.attributes_social}}
+                    <option value="attributes_social.{{@key}}">{{this}}</option>
+                    {{/each}}
+                    {{#each ../config.attributes_mental}}
+                    <option value="attributes_mental.{{@key}}">{{this}}</option>
+                    {{/each}}
+                  </optgroup>
+                  <optgroup label="Skills">
+                    {{#each ../config.skills_physical}}
+                    <option value="skills_physical.{{@key}}">{{this}}</option>
+                    {{/each}}
+                    {{#each ../config.skills_social}}
+                    <option value="skills_social.{{@key}}">{{this}}</option>
+                    {{/each}}
+                    {{#each ../config.skills_mental}}
+                    <option value="skills_mental.{{@key}}">{{this}}</option>
+                    {{/each}}
+                  </optgroup>
+                  <optgroup label="Traits">
+                    {{#each ../config.derivedTraits}}
+                    <option value="derivedTraits.{{@key}}">{{this}}</option>
+                    {{/each}}
+                  </optgroup>
+                  {{/select}}
+                </select>
+                <input name="system.effects.{{@index}}.value" type="number" data-dtype="Number" value="{{value}}" />
+              </span>
+              <span class="stoneButton effectRemove" data-index={{@index}}>-</span>
+              {{/each}}
+            </div>
+            <div class="form-line attributeList">
+              <label> Dice Pool</label> 
+              <span class="stoneButton dicePoolAdd">+</span>
+              {{#each system.dicePool.attributes}} 
+                <select name="system.dicePool.attributes.{{@index}}">
+                    {{#select this}}
+                      {{#each ../all_traits}}
+                        <optgroup label="{{localize name}}">
+                          {{#each list as |cvalue ckey|}}
+                            <option value="{{ckey}}">{{cvalue}}</option>
+                          {{/each}}
+                        </optgroup>
+                      {{/each}}
+                    {{/select}}
+                  </select>
+                <span class="stoneButton dicePoolRemove" data-index={{@index}}>-</span>
+              {{/each}}
+              <span>
+                + <input name="system.dicePool.value" type="number" data-dtype="Number" placeholder=0 value="{{system.dicePool.value}}" />
+              </span>
+            </div>
+          </div>
+        </div>
+    </section>
+</form>

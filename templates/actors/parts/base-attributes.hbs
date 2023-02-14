@@ -1,0 +1,234 @@
+<div class="tab-block">
+
+{{!-- Dream Form Attributes --}}
+{{#if system.isDreaming}}
+    <div class="attributes-flexrow">
+    <ol class="attributes-list dreamAttributes">
+        {{#each config.attributes_physical_dream as |cvalue ckey|}}
+        {{#with (lookup ../system.attributes_physical_dream [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            <input class="attribute-check" id="attributes_physical_dream{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+            <label class="button attribute-button" for="attributes_physical_dream{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.attributes_physical_dream.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+
+    <ol class="attributes-list dreamAttributes">
+        {{#each config.attributes_social_dream as |cvalue ckey|}}
+        {{#with (lookup ../system.attributes_social_dream [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            <input class="attribute-check" id="attributes_social_dream{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+            <label class="button attribute-button" for="attributes_social_dream{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.attributes_social_dream.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+
+    <ol class="attributes-list dreamAttributes">
+        {{#each config.attributes_mental_dream as |cvalue ckey|}}
+        {{#with (lookup ../system.attributes_mental_dream [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            <input class="attribute-check" id="attributes_mental_dream{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+            <label class="button attribute-button" for="attributes_mental_dream{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.attributes_mental_dream.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+    </div>
+{{else}}
+    {{!-- Attributes --}}
+    <div class="attributes-flexrow">
+    <ol class="attributes-list">
+        <li class="attributes-header major flexrow">
+        <span class="attribute-header">{{ localize "MTA.Physical" }}</span>
+        </li>
+        <li class="attributes-header flexrow">
+        <span class="attribute-key">{{ localize "MTA.Attribute" }}</span>
+        <span class="attribute-valueHeader">{{ localize "MTA.Value" }}</span>
+        </li>
+        {{#each config.attributes_physical as |cvalue ckey|}}
+        {{#with (lookup ../system.attributes_physical [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            <input class="attribute-check" id="attributes_physical{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+            <label class="button attribute-button" for="attributes_physical{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.attributes_physical.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+
+    <ol class="attributes-list">
+        <li class="attributes-header major flexrow">
+        <span class="attribute-header">{{ localize "MTA.Social" }}</span>
+        </li>
+        <li class="attributes-header flexrow">
+        <span class="attribute-key">{{ localize "MTA.Attribute" }}</span>
+        <span class="attribute-valueHeader">{{ localize "MTA.Value" }}</span>
+        </li>
+        {{#each config.attributes_social as |cvalue ckey|}}
+        {{#with (lookup ../system.attributes_social [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            <input class="attribute-check" id="attributes_social{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+            <label class="button attribute-button" for="attributes_social{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.attributes_social.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+
+    <ol class="attributes-list">
+        <li class="attributes-header major flexrow">
+        <span class="attribute-header">{{ localize "MTA.Mental" }}</span>
+        </li>
+        <li class="attributes-header flexrow">
+        <span class="attribute-key">{{ localize "MTA.Attribute" }}</span>
+        <span class="attribute-valueHeader">{{ localize "MTA.Value" }}</span>
+        </li>
+        {{#each config.attributes_mental as |cvalue ckey|}}
+        {{#with (lookup ../system.attributes_mental [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            <input class="attribute-check" id="attributes_mental{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+            <label class="button attribute-button" for="attributes_mental{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.attributes_mental.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+    </div>
+{{/if}}
+{{!-- Skills --}}
+    <div class="attributes-flexrow">
+    <ol class="attributes-list">
+        <li class="attributes-header flexrow">
+        {{#if (eq system.characterType "Mage")}}<span class="attribute-key">{{ localize "MTA.Rote" }}</span>{{/if}}
+        <span class="attribute-key">{{ localize "MTA.Skill" }}</span>
+        <span class="attribute-valueHeader">{{ localize "MTA.Value" }}</span>
+        </li>
+        {{#each config.skills_physical as |cvalue ckey|}}
+        {{#with (lookup ../system.skills_physical [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            {{#if (eq ../../system.characterType "Mage")}}
+            <label class="checkBox">
+                <input data-dtype="Boolean" name="system.skills_physical.{{ckey}}.isRote" type="checkbox" {{checked isRote}}>
+                <span></span>
+            </label>
+            {{/if}}
+            <span class="button skill-specialty tooltip {{#if specialties}} available {{/if}} {{#if isAssetSkill}} asset {{/if}}"  data-attribute="{{ckey}}" data-attributetype="physical"><i class="fab fa-stripe-s"></i>
+                {{#if specialties}}<span class="tooltip-text right"><ul>{{#each specialties}}<li>{{this}}</li>{{/each}}</ul></span>{{/if}}
+            </span>
+            <span>
+                <input class="attribute-check" id="skills_physical{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-category="physical" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+                <label class="button attribute-button" for="skills_physical{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.skills_physical.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+
+    <ol class="attributes-list">
+        <li class="attributes-header flexrow">
+        {{#if (eq system.characterType "Mage")}}<span class="attribute-key">{{ localize "MTA.Rote" }}</span>{{/if}}
+        <span class="attribute-key">{{ localize "MTA.Skill" }}</span>
+        <span class="attribute-valueHeader">{{ localize "MTA.Value" }}</span>
+        </li>
+        {{#each config.skills_social as |cvalue ckey|}}
+        {{#with (lookup ../system.skills_social [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            {{#if (eq ../../system.characterType "Mage")}}
+            <label class="checkBox">
+                <input data-dtype="Boolean" name="system.skills_social.{{ckey}}.isRote" type="checkbox" {{checked isRote}}>
+                <span></span>
+            </label>
+            {{/if}}
+            <span class="button skill-specialty tooltip {{#if specialties}} available {{/if}} {{#if isAssetSkill}} asset {{/if}}" data-attribute="{{ckey}}" data-attributetype="social"><i class="fab fa-stripe-s"></i>
+                {{#if specialties}}<span class="tooltip-text"><ul>{{#each specialties}}<li>{{this}}</li>{{/each}}</ul></span>{{/if}}
+            </span>
+            <span>
+                <input class="attribute-check" id="skills_social{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-category="social" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+                <label class="button attribute-button" for="skills_social{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.skills_social.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+
+    <ol class="attributes-list">
+        <li class="attributes-header flexrow">
+        {{#if (eq system.characterType "Mage")}}<span class="attribute-key">{{ localize "MTA.Rote" }}</span>{{/if}}
+        <span class="attribute-key">{{ localize "MTA.Skill" }}</span>
+        <span class="attribute-valueHeader">{{ localize "MTA.Value" }}</span>
+        </li>
+        {{#each config.skills_mental as |cvalue ckey|}}
+        {{#with (lookup ../system.skills_mental [ckey])}}
+        <li class="attribute flexrow" data-attribute="{{ckey}}">
+            <span>
+            {{#if (eq ../../system.characterType "Mage")}}
+            <label class="checkBox">
+                <input data-dtype="Boolean" name="system.skills_mental.{{ckey}}.isRote" type="checkbox" {{checked isRote}}>
+                <span></span>
+            </label>
+            {{/if}}
+            <span class="button skill-specialty tooltip {{#if specialties}} available {{/if}} {{#if isAssetSkill}} asset {{/if}}" data-attribute="{{ckey}}" data-attributetype="mental"><i class="fab fa-stripe-s"></i>
+                {{#if specialties}}<span class="tooltip-text"><ul>{{#each specialties}}<li>{{this}}</li>{{/each}}</ul></span>{{/if}}
+            </span>
+            <span>
+                <input class="attribute-check" id="skills_mental{{cvalue}}{{../../actor._id}}" data-attribute="{{ckey}}" data-category="mental" data-attributeValue={{chooseNum final value}} data-attributeLabel="{{cvalue}}" type="checkbox" data-dtype="Boolean">
+                <label class="button attribute-button" for="skills_mental{{cvalue}}{{../../actor._id}}">{{cvalue}}</label>
+            </span>
+            </span>
+            <span>
+            <span class="attribute-mod {{#if isModified}}{{posneg final value}}{{/if}}">{{#if isModified}}{{addBrackets final}}{{/if}}</span>
+            <input class="attribute-value" type="number" name="system.skills_mental.{{ckey}}.value" value={{chooseNum value 0}} data-dtype="Number" min=0 max=999>
+            </span>
+        </li>
+        {{/with}}
+        {{/each}}
+    </ol>
+    </div>
+</div>
